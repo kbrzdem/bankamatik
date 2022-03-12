@@ -1,0 +1,67 @@
+.deposit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 130px auto;
+  font-family: "Roboto";
+
+  &__wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #6d5dff;
+    border-radius: 2px;
+    padding: 14px 20px;
+    padding: 100px 300px;
+  }
+  &__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &__success {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    & span {
+      font-size: 16px;
+      color: #fff;
+      font-weight: 500;
+    }
+  }
+  .button--back {
+    background: #1a1c2b;
+    border-style: solid;
+    border-image: linear-gradient(to right, #4fb0ff31, #6d5dff3b) 1;
+    border-radius: 10px;
+    margin-top: 30px;
+  }
+  .button--mr {
+    margin-right: 20px;
+  }
+}
+.currency__desc {
+  font-size: 16px;
+  font-weight: 500;
+}
+.currency__detail {
+  font-size: 14px;
+  & p {
+    color: #6d5dff;
+  }
+}
+.currency__table {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.currency__buy-sell {
+  display: flex;
+  flex-direction: row;
+  margin-top: 16px;
+  & .mr {
+    margin-right: 40px;
+  }
+  & p {
+  }
+}
