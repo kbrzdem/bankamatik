@@ -3,27 +3,27 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Deposit() {
-  const [amount, setAmount] = useState("");
+  const [amount, setAmount] = useState(Number);
   const [succes, setSucces] = useState(false);
   const navigate = useNavigate();
-  const adminUser = JSON.parse(localStorage.getItem("user"));
+  const currentUser = JSON.parse(localStorage.getItem("user"));
   const localData = JSON.parse(localStorage.getItem("data"));
   const submitHandler = (e) => {
     e.preventDefault();
-    if (parseInt(amount) <= 50000.0) {
-      let updatedData = localData.map((item) => {
-        if (item.email === adminUser.email) {
-          return { ...item, balance: item.balance + parseInt(amount) };
+    if (amount <= 50000.0 && amount > 0 && typeof amount == "number") {
+      let updateUserData = localData.map((user) => {
+        if (user.email === currentUser.email) {
+          return { ...user, balance: user.balance + parseInt(amount) };
         } else {
-          return item;
+          return user;
         }
       });
-      localStorage.setItem("data", JSON.stringify(updatedData));
-      setSucces(false);
+      localStorage.setItem("data", JSON.stringify(updateUserData));
+      setSucces(true);
     } else {
       alert("Maximum yatırılacak tutar 50.000");
+      setSucces(false);
     }
-    setSucces(true);
   };
 
   return (
@@ -49,11 +49,10 @@ function Deposit() {
                 <label htmlFor="name">Amount:</label>
                 <input
                   className="input"
-                  type="text"
-                  name="name"
+                  type="number"
                   id="name"
-                  onChange={(e) => setAmount(e.target.value)}
-                  value={amount}
+                  onChange={(e) => setAmount(parseInt(e.target.value))}
+                  autoComplete="off"
                 />
               </div>
               <div>
